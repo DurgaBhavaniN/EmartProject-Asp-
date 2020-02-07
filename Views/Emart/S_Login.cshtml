@@ -1,0 +1,64 @@
+﻿@model EmartProject.Models.Seller
+
+@{
+    ViewData["Title"] = "Login";
+}
+    <style type="text/css">
+        /* essential */
+        label {
+            float: left;
+            width: 10em;
+            text-align: right;
+        }
+
+        input, textarea {
+            text-align: left;
+        }
+
+            input.submit {
+                margin:auto;
+                float:initial;
+            }
+            /* additionally give the button and the labels the same font to align the button better */
+            label, input.submit {
+                font: normal 0.8em Verdana, Geneva, Arial, Helvetica, sans-serif;
+            }
+    </style>
+<h1 style="text-align:center">Seller Login</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="S_Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="s_id" class="control-label"></label>
+                <input asp-for="s_id" class="form-control" />
+                <span asp-validation-for="s_id" class="text-danger"></span>
+            </div>
+            <br><br >
+            <div class="form-group">
+                <label asp-for="s_pwd" class="control-label"></label>
+                <input asp-for="s_pwd" class="form-control" />
+                <span asp-validation-for="s_pwd" class="text-danger"></span>
+            </div>
+            <br>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary" align="center" />
+            </div>
+        </form>
+        <div>
+            @ViewBag.message
+        </div>
+    </div>
+</div>
+<br /><br />
+<div>
+    <a asp-action="S_SignUp">Signup for new user</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

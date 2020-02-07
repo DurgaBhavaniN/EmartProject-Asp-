@@ -1,0 +1,111 @@
+﻿@model EmartProject.Models.ProductCreateViewModel
+
+@{
+    ViewData["Title"] = "AddItems";
+}
+    <style type="text/css">
+        /* essential */
+        label {
+            float: left;
+            width: 10em;
+            text-align: right;
+        }
+
+        input, textarea {
+            text-align: left;
+        }
+
+            input.submit {
+                margin-left: 10em;
+            }
+            /* additionally give the button and the labels the same font to align the button better */
+            label, input.submit {
+                font: normal 0.8em Verdana, Geneva, Arial, Helvetica, sans-serif;
+            }
+    </style>
+<h1 style="align-content:center">Adding Items</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form  enctype="multipart/form-data" asp-controller="EMart" asp-action="AddItems">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="c_id" class="control-label"></label>
+                <input asp-for="c_id" class="form-control" />
+                <span asp-validation-for="c_id" class="text-danger"></span>
+            </div><br />
+            <div class="form-group">
+                <label asp-for="c_name" class="control-label"></label>
+                <input asp-for="c_name" class="form-control" />
+                <span asp-validation-for="c_name" class="text-danger"></span>
+            </div><br />
+            <div class="form-group">
+                <label asp-for="sub_id" class="control-label"></label>
+                <input asp-for="sub_id" class="form-control" />
+                <span asp-validation-for="sub_id" class="text-danger"></span>
+            </div><br />
+            <div class="form-group">
+                <label asp-for="sub_name" class="control-label"></label>
+                <input asp-for="sub_name" class="form-control" />
+                <span asp-validation-for="sub_name" class="text-danger"></span>
+            </div><br />
+
+            <div class="form-group">
+                <label asp-for="i_name" class="control-label"></label>
+                <input asp-for="i_name" class="form-control" />
+                <span asp-validation-for="i_name" class="text-danger"></span>
+            </div><br />
+            <div class="form-group">
+                <label asp-for="price" class="control-label"></label>
+                <input asp-for="price" class="form-control" />
+                <span asp-validation-for="price" class="text-danger"></span>
+            </div><br />
+            <div class="form-group">
+                <label asp-for="gst" class="control-label"></label>
+                <input asp-for="gst" class="form-control" />
+                <span asp-validation-for="gst" class="text-danger"></span>
+            </div><br />
+            <div class="form-group">
+                <label asp-for="stk_num" class="control-label"></label>
+                <input asp-for="stk_num" class="form-control" />
+                <span asp-validation-for="stk_num" class="text-danger"></span>
+            </div><br />
+            <div class="form-group row">
+                <label asp-for="ItemPhoto" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <div class="custom-file">
+                        <input asp-for="ItemPhoto" class="form-control custom-file-input">
+                        <label class="custom-file-label">Choose File...</label>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <br /><br />
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-primary" />
+            </div>
+            @section Scripts {
+                <script>
+                        $(document).ready(function () {
+                            $('.custom-file-input').on("change", function () {
+                                var fileName = $(this).val().split("\\").pop();
+                                $(this).next('.custom-file-label').html(fileName);
+                            });
+                        });
+                </script>
+            }
+        </form>
+        @*<div>
+            @ViewBag.message
+        </div>*@
+    </div>
+</div>
+<br /><br />
+<div>
+    <a asp-action="SellerDashBoard">Back to page</a>
+</div>
+

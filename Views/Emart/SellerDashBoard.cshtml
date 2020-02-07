@@ -1,0 +1,53 @@
+﻿@model EmartProject.Models.Product
+
+@{
+    ViewData["Title"] = "SellerDashBoard";
+}
+<style>
+    #mySidenav a {
+        position: absolute; /* Position them relative to the browser window */
+        left: -80px; /* Position them outside of the screen */
+        transition: 0.3s; /* Add transition on hover */
+        padding: 15px; /* 15px padding */
+        width: 100px; /* Set a specific width */
+        text-decoration: none; /* Remove underline */
+        font-size: 20px; /* Increase font size */
+        color: white; /* White text color */
+        border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
+    }
+
+        #mySidenav a:hover {
+            left: 0; /* On mouse-over, make the elements appear as they should */
+        }
+
+    /* The about link: 20px from the top with a green background */
+    .AddItems {
+        top: 80px;
+        background-color: #555;
+    }
+
+    .DisplayS_Items {
+        top: 170px;
+        background-color: #555; /* Blue */
+    }
+
+    #disp {
+        top: 280px;
+        background-color: #555; /* Red */
+    }
+
+    .LogOut {
+        top: 390px;
+        background-color: #555 /* Light Black */
+    }
+</style>
+<br />
+<h1 style="text-align:center"> SellerDashBoard</h1>
+<br />
+<div id="mySidenav" class="sidenav">
+    @*<a href="AddItems.cshtml" id="AddItems">Add Items</a>*@
+    <a class="AddItems" asp-area="" asp-controller="Emart" asp-action="AddItems">AddItems</a><br /><br /><br />
+    <a class="DisplayS_Items" asp-area="" asp-controller="Emart" asp-action="DisplayS_Items">Display S_Items</a><br /><br />
+    <a href="#" id="disp">Display Products</a><br /><br />
+    <a class="LogOut" asp-area="" asp-controller="Emart" asp-action="LogOut">LogOut</a>
+</div>

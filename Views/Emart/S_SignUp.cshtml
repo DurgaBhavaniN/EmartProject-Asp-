@@ -1,0 +1,128 @@
+﻿@model EmartProject.Models.SellerCreateViewModel
+
+@{
+    ViewData["Title"] = "SignUp";
+}
+    
+<h1 style="text-align:center">Seller SignUp</h1>
+
+
+<hr />
+<style type="text/css">
+    /* essential */
+    label {
+        float: left;
+        width: 10em;
+        text-align: right;
+    }
+
+    input, textarea {
+        text-align: left;
+    }
+
+        input.submit {
+            margin-left: 10em;
+        }
+        /* additionally give the button and the labels the same font to align the button better */
+        label, input.submit {
+            font: normal 0.8em Verdana, Geneva, Arial, Helvetica, sans-serif;
+        }
+</style>
+
+    <div class="row" style="align-items:center " >
+        <div class="col-md-4">
+            
+            <form enctype="multipart/form-data" asp-controller="EMart" asp-action="S_SignUp" >
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <table border="1" align="center">
+                    <tr>
+                        <td>
+                            <div class="form-group">
+
+                                                <label asp-for="s_name" class="control-label"></label>
+                                                <input asp-for="s_name" class="form-control" />
+                                                <span asp-validation-for="s_name" class="text-danger"></span>
+                                                </div>
+                                            </td>
+                        </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <label asp-for="s_pwd" class="control-label"></label>
+                                <input asp-for="s_pwd" class="form-control" />
+                                <span asp-validation-for="s_pwd" class="text-danger"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <label asp-for="s_emailid" class="control-label"></label>
+                                <input asp-for="s_emailid" class="form-control" />
+                                <span asp-validation-for="s_emailid" class="text-danger"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <label asp-for="gstin" class="control-label"></label>
+                                <input asp-for="gstin" class="form-control" />
+                                <span asp-validation-for="gstin" class="text-danger"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td
+                    <div class="form-group">
+                        <label asp-for="bank_details" class="control-label"></label>
+                        <input asp-for="bank_details" class="form-control" />
+                        <span asp-validation-for="bank_details" class="text-danger"></span>
+                    </div>></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group row">
+                                <label asp-for="Photpath" class="col-sm-2 col-form-label"></label>
+                                <div class="col-sm-10">
+                                    <div class="custom-file">
+                                        <input asp-for="Photpath" class="form-control custom-file-input">
+                                        <label class="custom-file-label"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <br />
+                <br />
+                    <div class="form-group">
+                        <input type="submit" value="SignUp" class="btn btn-primary"  />
+                    </div>
+
+                    @section Scripts {
+                        <script>
+                            $(document).ready(function () {
+                                $('.custom-file-input').on("change", function () {
+                                    var fileName = $(this).val().split("\\").pop();
+                                    $(this).next('.custom-file-label').html(fileName);
+                                });
+                            });
+                        </script>
+                    }
+
+            </form>
+            
+            @*<div>
+            @ViewBag.message
+        </div>*@
+        </div>
+    </div>
+<br /><br />
+<div>
+    <a asp-action="S_Login" >Login</a>
+</div>
+
+@*@section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }*@
